@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>DCGAN Example</title>
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+</head>
+
+<body>
+	<h1>DCGAN Example</h1>
+
+	<canvas width="128" height="128" style="width:200px;"></canvas>
+	<br>
+	<select id="seltype">
+		<option>face</option>
+		<option>geo</option>
+		<option>resnet128</option>
+	</select>
+	<button id="btnload">load</button><br>
+	<button id="btngenerate">generate</button>
+	
+	<script type="module">
+		const ctx = document.querySelector("canvas").getContext("2d");
+		let dcgan;
+		btnload.onclick = async () => {
+			btnload.textContent = "loading...";
+			ctx.fillRect(0, 0, 128, 128);
+			dcgan = await ml5.DCGAN("model/" + seltype.value + "/manifest.json");
+			btnload.textContent = "load";
+			generate();
+		};
+		const generate = async () => {
+			if (!dcgan) {
+				alert("click [load] first!");
+				return;
+			}
+			// generate an image and put it on our canvas:
+			const result = await dcgan.generate();
+			const w = Math.sqrt(result.raw.length / 4);
+			const img = new ImageData(result.raw, w, w);
+			ctx.putImageData(img, 0, 0);
+		};
+		btngenerate.onclick = generate;
+	</script>
+	
+</body>
+
+</html>
