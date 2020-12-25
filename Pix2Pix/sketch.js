@@ -45,6 +45,9 @@ async function setup() {
   clearBtn.addEventListener("click", () => {
     clearCanvas();
   });
+  resetBtn.onclick = () => {
+    drawImage();
+  };
 
   document.querySelector("canvas").addEventListener("mousemove", onMouseUpdate);
   document.querySelector("canvas").addEventListener("mousedown", onMouseDown);
@@ -137,7 +140,7 @@ function createCanvas(w, h) {
   const canvasElement = document.createElement("canvas");
   canvasElement.width = w;
   canvasElement.height = h;
-  document.body.appendChild(canvasElement);
+  canvasContainer.appendChild(canvasElement);
   const canvas = canvasElement.getContext("2d");
   canvas.fillStyle = "#ffffff";
   canvas.fillRect(0, 0, w, h);

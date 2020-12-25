@@ -16,21 +16,23 @@
   <p>4. You could click the "Clear" button to clear the canvas and draw again.</p>
   <p id="status">Loading Model... Please wait...</p>
 
-  <img id="inputImage" width="256px" src="images/input.png" alt="input image">
-  <img id="outputImage" width="256px" src="" alt="output image">
+  <img id="inputImage" width="256px" src="images/input.png" alt="input image" style="display:none">
 
-  <div class="flex">
+  <img id="outputImage" width="256px" src="" alt="output image" style="vertical-align:top">
+  <div class="flex" style="display:inline-block">
     <div>
       <div id="canvasContainer"></div>
       <div id="btnContainer" class="flex flex-space-between">
         <label><input type="checkbox" id="chkerase">Erase</label>
         <button id="clearBtn">Clear</button>
+        <button id="resetBtn">Reset</button>
         <button id="transferBtn" class="btn">Transfer</button>
       </div>
     </div>
     <div id="transferContainer">
     </div>
-    <div id="output"></div>
+    <div id="output">
+    </div>
   </div>
 
   <script src="sketch.js"></script>
