@@ -1,5 +1,5 @@
 # ml5.js サンプル
-[ml5js](https://ml5js.org/)のサンプルを動かしてみました
+[ml5js](https://ml5js.org/)より抜粋、一部調整
 
 ## 1. CNN 畳み込みニューラルネットワーク
 
